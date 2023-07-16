@@ -5,14 +5,14 @@ import { Outlet } from 'react-router-dom';
 
 export const Layout = () => {
   return (
-    <div>
-      <Header/>
+    <Box>
+      <Header />
 
-      <Box>
-        <Outlet/>
+      <Box h="auto" minH="70vh" maxW="1440" bg="#ececec" pt={5} pb={5}>
+        <Outlet />
       </Box>
-      
-      <Footer/>
-    </div>
-  )
+
+      <Footer />
+    </Box>
+  );
 }

@@ -1,12 +1,15 @@
-import { Layout } from "./Layout"
+import { CategoriesProvider } from "./context/CategoriesProvider"
 import { AppRoutes } from "./routes/AppRoutes"
+import { ChakraProvider } from '@chakra-ui/react'
 
 function App() {
 
   return (
-
-    <AppRoutes/>
-
+    <CategoriesProvider>
+      <ChakraProvider>
+        <AppRoutes/>
+      </ChakraProvider>
+    </CategoriesProvider>
   )
 }
 
