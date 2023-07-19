@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import {DrinksContext} from '../context/DrinksProvider';
+import { DrinksContext } from '../context/DrinksProvider';
 
-export function useDrinks(){
-    return useContext(DrinksContext);
+export function useDrinks() {
+  return useContext(DrinksContext);
 }

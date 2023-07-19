@@ -8,7 +8,7 @@ export const Layout = () => {
     <Box>
       <Header />
 
-      <Box h="auto" minH="70vh" maxW="1440" bg="#ececec" pt={5} pb={5}>
+      <Box h="auto" minH="70vh"  bg="#ececec" pt={5} pb={5}>
         <Outlet />
       </Box>
 

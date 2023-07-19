@@ -1,20 +1,43 @@
-import React from 'react'
 import { DrinkCard } from '../DrinkCard'
-import { Center } from '@chakra-ui/react';
 import { useDrinks } from '../../hooks/useDrinks';
-
+import { Center, Heading, SimpleGrid, Spinner } from '@chakra-ui/react';
 
 export const DrinkList = () => {
-  const {drinks} = useDrinks();
-
-  if(drinks.length === 0){
+  const { drinks, loading } = useDrinks();
+  console.log(loading);
+  if(drinks){
+    if (drinks.length === 0) {
+      return (
+        <Center className='p-5 m-5'>
+          <Heading  size='md'  className='text-center'>Please select a Drink to start</Heading>
+        </Center>
+      );
+    }
+  }else if(!drinks){
     return (
       <Center className='p-5 m-5'>
-        <h1 className='text-center'>No Results, please select a Drink</h1>
+        <Heading size='md' className='text-center'>Please select a Drink</Heading>
       </Center>
-    )
+    );
   }
-  return (    
-    <DrinkCard/>  
-  )
+
+  return (
+    <>
+    {
+      loading && (
+        <Center height='200px'>
+          <Spinner size='xl' color='darkSlateBlue' />
+        </Center>
+      ) 
+    }
+
+<SimpleGrid columns={[1, null, 4]} spacing='40px' >
+      {drinks.map((drink) => (
+        <DrinkCard key={drink.idDrink} drink={drink} />
+      ))}
+
+  </SimpleGrid>
+
+    </>
+  );
 }

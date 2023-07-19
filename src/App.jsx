@@ -7,11 +7,11 @@ function App() {
 
   return (
     <ChakraProvider>
-      <CategoriesProvider>
-        <DrinksProvider>
+      <DrinksProvider>
+        <CategoriesProvider>
           <AppRoutes />
-        </DrinksProvider>
-      </CategoriesProvider>
+        </CategoriesProvider>
+      </DrinksProvider>
     </ChakraProvider>
   );
 }
