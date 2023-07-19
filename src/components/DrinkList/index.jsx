@@ -1,15 +1,20 @@
 import React from 'react'
 import { DrinkCard } from '../DrinkCard'
-import { Box, Center } from '@chakra-ui/react'
+import { Center } from '@chakra-ui/react';
+import { useDrinks } from '../../hooks/useDrinks';
+
 
 export const DrinkList = () => {
-  return (
+  const {drinks} = useDrinks();
 
-
-      <DrinkCard/>  
-
-  
-
-    
+  if(drinks.length === 0){
+    return (
+      <Center className='p-5 m-5'>
+        <h1 className='text-center'>No Results, please select a Drink</h1>
+      </Center>
+    )
+  }
+  return (    
+    <DrinkCard/>  
   )
 }

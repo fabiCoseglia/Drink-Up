@@ -1,7 +1,8 @@
 import { Button, ButtonGroup, Card, CardBody, CardFooter, Divider, Heading, Image, SimpleGrid, Stack, Text } from '@chakra-ui/react'
 import React from 'react'
 
-export const DrinkCard = () => {
+export const DrinkCard = ({drink}) => {
+
   return (
         <SimpleGrid spacing={4} columns={[1, null, 4]} justifyItems="center">
         <Card maxW='lg' w='15rem'>
