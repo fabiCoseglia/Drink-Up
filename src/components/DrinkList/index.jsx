@@ -4,7 +4,6 @@ import { Center, Heading, SimpleGrid, Spinner } from '@chakra-ui/react';
 
 export const DrinkList = () => {
   const { drinks, loading } = useDrinks();
-  console.log(loading);
   if(drinks){
     if (drinks.length === 0) {
       return (

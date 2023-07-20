@@ -1,17 +1,27 @@
-import { Button, ButtonGroup, Card, CardBody, CardFooter, Center, Divider, Heading, Image, Stack, Text } from '@chakra-ui/react';
 import React from 'react';
+import {
+  Button,
+  ButtonGroup,
+  Card,
+  CardBody,
+  CardFooter,
+  Center,
+  Divider,
+  Heading,
+  Image,
+  Stack,
+  Text,
+} from '@chakra-ui/react';
+import { useDrinks } from '../../hooks/useDrinks';
+import PropTypes from 'prop-types';
 
 export const DrinkCard = ({ drink }) => {
-
+  const { handleModalClick, handleDrinkIdClick } = useDrinks();
   return (
-      <Center>
+    <Center>
       <Card maxW='lg' w='15rem'>
         <CardBody>
-          <Image
-            src={drink.strDrinkThumb}
-            alt={`Image of ${drink.strDrink}`}
-            borderRadius='lg'
-          />
+          <Image src={drink.strDrinkThumb} alt={`Image of ${drink.strDrink}`} borderRadius='lg' />
           <Stack mt='6' spacing='3'>
             <Heading size='md'>{drink.strDrink}</Heading>
             <Text color='green.600' fontSize='2xl' textAlign='center'>
@@ -22,15 +32,30 @@ export const DrinkCard = ({ drink }) => {
         <Divider w='80%' m='0 auto' color='gray.500' />
         <CardFooter>
           <ButtonGroup spacing='2' m='0 auto'>
-            <Button variant='solid' colorScheme='yellow'>
-              Buy now
+            <Button
+              variant='solid'
+              colorScheme='yellow'
+              onClick={() => {
+                handleDrinkIdClick(drink.idDrink); // Guardar el drinkId en el estado del contexto
+                handleModalClick(); // Abrir el modal
+              }}
+            >
+              Recipe
             </Button>
             <Button variant='solid' colorScheme='yellow'>
-              More info
+              Buy Now
             </Button>
           </ButtonGroup>
         </CardFooter>
       </Card>
-      </Center>
+    </Center>
   );
+};
+
+DrinkCard.propTypes = {
+  drink: PropTypes.shape({
+    strDrinkThumb: PropTypes.string.isRequired,
+    strDrink: PropTypes.string.isRequired,
+    idDrink: PropTypes.string.isRequired,
+  }).isRequired,
 };
