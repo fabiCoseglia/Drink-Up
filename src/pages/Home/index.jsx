@@ -9,6 +9,7 @@ export const Home = () => {
       <SearchDrink/>
       <DrinkList/>
       <DetailModal />
+
     </Box>
     
   )

@@ -37,7 +37,15 @@ const DrinksProvider = ({ children }) => {
     try {
       setLoading(true);
       const drinksData = await filterDrinksSerive(data.category);
-      setDrinks(drinksData);
+      const drinksWithPrice = drinksData.map((drink)=>{
+        return {
+            ...drink,
+            price: Math.ceil(Math.random() * 25),
+            quantity: 0,
+        }
+    })
+      setDrinks(drinksWithPrice);
+      console.log(drinksWithPrice);
     } catch (error) {
       console.error(error);
     } finally {

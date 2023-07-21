@@ -25,7 +25,7 @@ export const DrinkCard = ({ drink }) => {
           <Stack mt='6' spacing='3'>
             <Heading size='md'>{drink.strDrink}</Heading>
             <Text color='green.600' fontSize='2xl' textAlign='center'>
-              $450
+            $ {drink.price}
             </Text>
           </Stack>
         </CardBody>
@@ -36,8 +36,8 @@ export const DrinkCard = ({ drink }) => {
               variant='solid'
               colorScheme='yellow'
               onClick={() => {
-                handleDrinkIdClick(drink.idDrink); // Guardar el drinkId en el estado del contexto
-                handleModalClick(); // Abrir el modal
+                handleDrinkIdClick(drink.idDrink); 
+                handleModalClick(); 
               }}
             >
               Recipe
@@ -57,5 +57,6 @@ DrinkCard.propTypes = {
     strDrinkThumb: PropTypes.string.isRequired,
     strDrink: PropTypes.string.isRequired,
     idDrink: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
   }).isRequired,
 };
