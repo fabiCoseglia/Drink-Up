@@ -1,3 +1,4 @@
+import { CartProvider } from "./context/CartProvider";
 import { CategoriesProvider } from "./context/CategoriesProvider"
 import { DrinksProvider } from "./context/DrinksProvider"
 import { ModalProvider } from "./context/ModalProvider";
@@ -9,11 +10,13 @@ function App() {
   return (
     <ChakraProvider>
       <ModalProvider>
-        <DrinksProvider>
-          <CategoriesProvider>
-            <AppRoutes />
-          </CategoriesProvider>
-        </DrinksProvider>
+        <CartProvider>
+          <DrinksProvider>
+            <CategoriesProvider>
+              <AppRoutes />
+            </CategoriesProvider>
+          </DrinksProvider>
+        </CartProvider>
       </ModalProvider>
     </ChakraProvider>
   );

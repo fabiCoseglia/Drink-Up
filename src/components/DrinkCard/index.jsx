@@ -11,12 +11,31 @@ import {
   Image,
   Stack,
   Text,
+  useToast,
 } from '@chakra-ui/react';
 import { useDrinks } from '../../hooks/useDrinks';
 import PropTypes from 'prop-types';
+import { useCart } from '../../hooks/useCart';
 
 export const DrinkCard = ({ drink }) => {
   const { handleModalClick, handleDrinkIdClick } = useDrinks();
+  const { addToCart } = useCart();
+  const toast = useToast();
+
+  const handleToast = () => {
+    toast({
+      description: `${drink.strDrink} has been added to cart`,
+      status: 'success',
+      duration: 3000,
+      isClosable: true,
+    });
+  };
+
+  const handleAddToCart = (drink) => {
+    addToCart(drink);
+    handleToast();
+  };
+
   return (
     <Center>
       <Card maxW='lg' w='15rem'>
@@ -25,7 +44,7 @@ export const DrinkCard = ({ drink }) => {
           <Stack mt='6' spacing='3'>
             <Heading size='md'>{drink.strDrink}</Heading>
             <Text color='green.600' fontSize='2xl' textAlign='center'>
-            $ {drink.price}
+              $ {drink.price}
             </Text>
           </Stack>
         </CardBody>
@@ -36,14 +55,15 @@ export const DrinkCard = ({ drink }) => {
               variant='solid'
               colorScheme='yellow'
               onClick={() => {
-                handleDrinkIdClick(drink.idDrink); 
-                handleModalClick(); 
+                handleDrinkIdClick(drink.idDrink);
+                handleModalClick();
+                handleToast(); // Agregar los paréntesis aquí para llamar la función
               }}
             >
               Recipe
             </Button>
-            <Button variant='solid' colorScheme='yellow'>
-              Buy Now
+            <Button variant='solid' colorScheme='yellow' onClick={() => handleAddToCart(drink)}>
+              Buy
             </Button>
           </ButtonGroup>
         </CardFooter>
